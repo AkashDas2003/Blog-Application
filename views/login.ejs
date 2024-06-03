@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="w-full p-10 text-white h-screen bg-zinc-900">
+      <h1 class="text-center uppercase font-bold text-5xl">
+        Login To Your Account
+      </h1>
+      <!-- username,name,email,age,password -->
+      <form action="/login" autocomplete="off" method="post" class="mt-10">
+        <input
+          class="px-3 py-2 outline-none rounded-xl bg-transparent border-2 border-zinc-800"
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          style="color: white"
+        />
+        <input
+          class="px-3 py-2 outline-none rounded-xl bg-transparent border-2 border-zinc-800"
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          style="color: white"
+          maxlength="6"
+        />
+
+        <input
+          type="submit"
+          style="color: white"
+          class="bg-green-500 hover:bg-green-600 text-zinc-900 font-bold py-2 px-4 rounded-xl mt-5 transition duration-300 ease-in-out transform hover:scale-105"
+          value="Login"
+        />
+        <br />
+        <div class="text-center mt-3">
+          <h1 class="inline-block mr-2">Don't have an account?</h1>
+          <a href="/home" class="text-blue-500 inline-block">Register</a>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

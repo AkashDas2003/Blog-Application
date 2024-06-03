@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="w-full p-2 text-white bg-zinc-900 text-center">
+      <div class="flex justify-between">
+        <div class="overflow-hidden rounded-full w-40 h-40">
+          <img
+            src="/images/uploads/<%= user.profilepic %>"
+            class="w-full h-full object-cover"
+          />
+          <h3 class="text-white">want to upload new profile picture???</h3>
+        </div>
+
+        <div>
+          <a
+            class="bg-red-500 rounded-md px-3 py-2 text-sm uppercase mb-5 inline-block font-bold"
+            href="/logout"
+            >logout</a
+          >
+        </div>
+      </div>
+      <h1 class="uppercase font-bold text-6xl">Profile</h1>
+
+      <div>
+        <h1 class="mt-5 uppercase">
+          <span class="font-semibold text-3xl"
+            >Hello, <%=user.name%> &#128075;</span
+          >
+        </h1>
+        <button
+          onclick="window.location.href='/upload'"
+          class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-xl mt-5 transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Upload New Profile Pic
+        </button>
+      </div>
+
+      <h5 class="mt-5 text-semibold text-2xl">You Can Create A New Post</h5>
+      <form action="/post" autocomplete="off" method="post">
+        <textarea
+          name="content"
+          placeholder=" What's on your mind!!! 🤔🤔"
+          class="m-5 w-1/3 p-3 outline-none bg-transparent border-2 border-zinc-800"
+        ></textarea>
+        <input
+          type="submit"
+          class="px-3 w-40 mt-10 cursor-pointer font-bold uppercase rounded-xl py-2 bg-blue-700"
+        />
+      </form>
+
+      <div class="posts min-h-screen items-center mt-20 bg-zinc-900">
+        <h3 class="text-3xl uppercase text-zinc-500 font-bold">Your Posts</h3>
+        <div class="postcontainer gap-5 flex flex-wrap">
+          <% user.posts.reverse().forEach(function(post){ %>
+          <div
+            class="post w-1/3 h-1/2 mt-5 p-4 rounded-xl border-4 border-zinc-700 bg-zinc-800 relative"
+          >
+            <h4 class="text-blue-500 mb-2 font-bold"><%= user.name %></h4>
+            <p class="text-md tracking-tighter font-semibold">
+              <%= post.content %>
+            </p>
+            <small class="mt-4 inline-block text-sm"
+              ><%= post.likes.length %></small
+            >
+            <div class="btns flex gap-4 mt-1">
+              <a href="/like/<%=post._id%>" class="text-blue-500"
+                ><%= post.likes.indexOf(user._id)===-1?"Like":"Unlike" %></a
+              >
+              <a href="/edit/<%=post._id%>" class="text-zinc-400">Edit</a>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
